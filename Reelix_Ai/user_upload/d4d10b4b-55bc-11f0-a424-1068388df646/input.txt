@@ -1,0 +1,8 @@
+file 'pratik.jpg
+duration 1
+file 'pb.jpg
+duration 1
+file 'pay.jpg
+duration 1
+file 'Shivam.jpg
+duration 1

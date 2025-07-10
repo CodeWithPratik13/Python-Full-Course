@@ -1,0 +1,1 @@
+    print("Its not greater then 10")

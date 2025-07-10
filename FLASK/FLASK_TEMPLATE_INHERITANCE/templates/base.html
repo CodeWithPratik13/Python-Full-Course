@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%} {%endblock%}</title>
+    <style>
+        nav{
+            background-color: aqua;
+            color: black;
+            font-size: x-large;
+            font-weight: bold;
+            margin-bottom: 300px;
+            gap: 10px;
+            display: flex;
+            justify-content: center;
+            font-family:'Times New Roman', Times, serif;
+        }
+        body{
+            border: 2px solid black;
+            width: 1000px;
+            height: 1001px;
+           
+        }
+        footer{
+            background-color: black;
+            color: white;
+            padding: 15px;
+            margin-top: 300px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/"><span>Home</span></a>
+        <a href="/about"><span>About</span></a>
+        <a href="/contact"><span>Contact</span></a>
+    </nav>
+   {% block content %} {% endblock %}
+
+   <footer>
+    this is footer
+   </footer>
+</body>
+</html>
