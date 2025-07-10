@@ -1,23 +1,27 @@
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 
 query = input("What type of news are you interested in today? ")
 api = "your_api_key_here"
 
-today = datetime.today().strftime('%Y-%m-%d')
-url = f"https://newsapi.org/v2/everything?q={query}&from={today}&sortBy=publishedAt&apiKey={api}&pageSize=10"
+past_date = (datetime.today() - timedelta(days=7)).strftime('%Y-%m-%d')
+
+url = f"https://newsapi.org/v2/everything?q={query}&from={past_date}&sortBy=publishedAt&pageSize=5&apiKey={api}"
 
 r = requests.get(url)
+data = r.json()
+
+# Debug: Print full response
+print(data)
 
 if r.status_code == 200:
-    data = r.json()
     articles = data.get("articles", [])
     if articles:
         for index, article in enumerate(articles):
-            print(index + 1, article["title"])
-            print(article["url"])
+            print(f"{index + 1}. {article['title']}")
+            print(article['url'])
             print("\n********************************************\n")
     else:
         print("No articles found for your query.")
 else:
-    print("Failed to fetch news:", r.status_code)
+    print("Error:", data.get("message", "Unknown error occurred."))
